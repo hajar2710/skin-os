@@ -1,0 +1,233 @@
+/* --- Global Configuration & Design System Variables --- */
+:root {
+    --bg-color: #fce4e8;       /* Soft pinkish-white background from frontpage */
+    --primary-pink: #FF85A2;   /* Vibrant pastel pink */
+    --text-main: #4A3E41;      /* Soft dark charcoal color */
+    --white: #FFFFFF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color); /* Updated background to your brand's soft pink */
+    color: var(--text-main);
+}
+
+/* --- Centered Navigation Header Layout (Imported from style2.css) --- */
+.navbar {
+    display: flex;
+    flex-direction: column;   
+    justify-content: center;
+    align-items: center;      
+    padding: 5px 8%;
+    background-color: var(--white);
+    box-shadow: 0 4px 15px rgba(255, 133, 162, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 0px;
+                     
+}
+
+.logo-heading {
+    font-size: 30px;
+    font-weight: 650;
+    color: var(--text-main);
+    text-align: center;
+    line-height: 0.5;    
+    margin-bottom: 0;     
+}
+
+.logo-heading span {
+    color: var(--primary-pink);
+}
+
+.logo-subtext {
+    font-size: 10px;          
+    color: #8C7E82;           
+    font-weight: 300;         
+    letter-spacing: 1px;      
+    text-align: center;
+}
+
+/* --- Global Output Layout --- */
+.output-page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.output-section {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 35px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f0edf0;
+}
+
+/* FIX: Centered the title for each distinct output section module */
+.section-title {
+    font-size: 24px;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center; 
+}
+
+/* --- Global Skincare Routine Introduction Paragraph --- */
+.routine-general-explanation {
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #625558;
+    background: #ffeff4;
+    padding: 18px 25px;
+    border-radius: 14px;
+    border-left: 4px solid var(--primary-pink);
+}
+
+/* --- Section 1: Skin Analysis --- */
+.analysis-block {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.analysis-image {
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 3px solid #FF85A2;
+}
+
+.analysis-text {
+    flex: 1;
+    text-align: justify;
+}
+
+.skin-type-badge {
+    display: inline-block;
+    background: #FFF5F7;
+    color: #FF85A2;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* --- Section 2: Ingredients Grid (3 Columns) --- */
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.ingredient-card {
+    background: #fafafa;
+    border: 3px solid #af195ab0;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+}
+
+.ingredient-name {
+    color: #FF85A2;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* --- Section 3: Product Suggestions Grid (4 Columns) --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+.product-card {
+    border: 2px solid #c5c6c7;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #ffffff;
+}
+
+.product-step-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a0aec0;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.product-image {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 5px 0;
+}
+
+/* --- Try Analysis Again Action Area --- */
+.restart-action-container {
+    display: flex;
+    justify-content: center;   /* Centers the button horizontally */
+    margin-top: 10px;
+    margin-bottom: 30px;       /* Adds breathing space at the bottom of the page */
+    width: 100%;
+}
+
+.btn-restart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    
+    background-color: var(--primary-pink); /* Reuses your brand pastel pink */
+    color: var(--white);
+    padding: 14px 36px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;                   /* Perfect round pill alignment */
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 133, 162, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Elegant lift response when users hover over it */
+.btn-restart:hover {
+    transform: translateY(-2px);
+    background-color: #fc8faa;             /* Matches your hover pink signature color */
+    box-shadow: 0 6px 20px rgba(252, 143, 170, 0.4);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .ingredients-grid {
+        grid-template-columns: 1fr;
+    }
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .analysis-block {
+        flex-direction: column;
+        text-align: center;
+    }
+}

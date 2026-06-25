@@ -1,0 +1,271 @@
+/* ==========================================================================
+   ✨ SkinOS Frontpage - Clean Layout Stylesheet
+   ========================================================================== */
+
+/* --- Global Reset & Variables --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #fce4e8;       /* Soft pinkish-white background */
+    --primary-pink: #FF85A2;   /* Vibrant pastel pink */
+    --light-pink: #FFB3C6;     /* Soft accent pink */
+    --dark-maroon: #932c2c;    /* Deep magenta/berry for high-contrast text */
+    --text-main: #4A3E41;      /* Soft dark charcoal/brown for readable body text */
+    --white: #FFFFFF;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Header & Navigation --- */
+.navbar {
+    display: flex;
+    flex-direction: column;   /* Stacks the logo heading on top of the small text */
+    justify-content: center;
+    align-items: center;      /* Centers both pieces of text horizontally */
+    padding: 13px 8%;
+    background-color: var(--white);
+    box-shadow: 0 4px 15px rgba(255, 133, 162, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 5px;                 /* Creates a small, clean space between the logo and subtext */
+}
+
+.logo-heading {
+    font-size: 45px;
+    font-weight: 650;
+    color: var(--text-main);
+    text-align: center;
+    line-height: 1.1;  
+    margin-top: 4px;       /* Keeps the spacing tight and neat */
+}
+
+.logo-heading span {
+    color: var(--primary-pink);
+}
+
+.logo-subtext {
+    font-size: 16px;          
+    color: #8C7E82;           /* A softer, muted grey/brown color so it doesn't distract */
+    font-weight: 300;         /* Makes the font thinner and elegant */
+    letter-spacing: 1px;      /* Adds a little space between letters for a modern look */
+    text-align: center;
+}
+
+/* --- Hero Section --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20%;
+    min-height: 50vh;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 700px;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.hero-content h1 span {
+    color: var(--primary-pink);
+}
+
+.hero-content h2 {
+    font-size: 24px;          
+    color: var(--text-main);  
+    font-weight: 600;
+    line-height: 1.3;                
+    margin-bottom: 15px;      
+}
+
+/* Space out the main description paragraphs */
+.hero-desc {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #6B5E62;
+    text-align: justify;
+    margin-bottom: 20px;      /* Creates a consistent, perfect gap below each paragraph */
+}
+
+/* Spacing for the list header line */
+.features-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-top: 30px;         /* Pushes it elegantly away from the paragraph text */
+    margin-bottom: 10px;      /* Brings it tight against its list items below */
+}
+
+/* Tight layout spacing for your feature list items */
+.features-list {
+    list-style: none;         /* Removes default bullets to keep your manual '-' symbols */
+    padding-left: 0;
+}
+
+.features-list li {
+    font-size: 18px;
+    color: #6B5E62;
+    margin-bottom: 6px;       /* Keeps the list items looking tightly grouped together */
+    line-height: 1.4;
+}
+
+/* --- Main Launch Action Button --- */
+.start-quiz-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; 
+    
+    background-color: #fc8faa; /* Your signature pink */
+    color: #ffffff;
+    padding: 16px 36px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 20px;
+}
+
+.start-quiz-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(252, 143, 170, 0.3);
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.image-box {
+    width: 500px;
+    height: 650px;
+    background-image: url('front-page-image-1.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- Features Section --- */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px 20px;
+    padding: 60px 8%;
+    background-color: var(--white);
+}
+
+.section-title {
+    grid-column: span 3;      /* Forces the title to stretch across all columns */
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.card {
+    padding: 30px;
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    border-top: 4px solid var(--light-pink);
+    box-sizing: border-box;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--dark-maroon);
+}
+
+.card p {
+    text-align: justify;
+    color: var(--text-main);
+}
+
+.card-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;    
+}
+
+.start-buttons {
+    grid-column: span 3;
+    display: flex;
+    gap: 15px;
+    font-size: 25px;
+    justify-content: center;
+    margin: 20px auto 0 auto;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--text-main);
+    color: var(--bg-color);
+    font-size: 14px;
+}
+
+/* --- Layout Optimization Zoom Adjustments --- */
+.home-zoom {
+    zoom: 67%;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 968px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 40px;
+    }
+    .hero-content {
+        margin-bottom: 40px;
+    }
+    .hero-image {
+        justify-content: center;
+    }
+    .image-box {
+        width: 300px;
+        height: 300px;
+    }
+    .features {
+        grid-template-columns: 1fr;
+    }
+    .section-title {
+        grid-column: span 1;
+    }
+    .start-buttons {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Analysis - Question 3: Irritated</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='question3_irritated.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="quiz-page">
+  
+  <nav class="glass-nav">
+    <span class="nav-logo">Skin<span>OS</span></span>
+            <div class="stepper-wrapper">
+                <div class="step-bubble">Question 1</div>
+                <div class="step-line"></div>
+                <div class="step-bubble">Question 2</div>
+                <div class="step-line"></div>
+                <div class="step-bubble active">Question 3</div>
+                <div class="step-line"></div>
+                <div class="step-bubble">Question 4</div>
+            </div>
+    </nav>
+    
+    <div class="quiz-container">
+        <div class="question-section">
+            <h2 class="quiz-question">How often your skin become red after using any skincare product?</h2>
+
+            <form id="ageForm">
+            <div class="cards-grid-container">
+            
+                        <button type="button" data-value="very_often" onclick="saveIrritated('very_often')" class="cute-square-card">
+                    <h3 class="card-title">Very Often</h3>
+                </button>
+
+                <button type="button" data-value="sometimes" onclick="saveIrritated('sometimes')" class="cute-square-card">
+                    <h3 class="card-title">Sometimes</h3>
+                </button>
+
+                <button type="button" data-value="rarely" onclick="saveIrritated('rarely')" class="cute-square-card">
+                    <h3 class="card-title">Rarely</h3>
+                </button>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="navigation-buttons">
+        <a href="/question2" class="btn btn-secondary">Back</a>
+    </div>
+</div>
+
+<script>
+// 1. Handles clicking a card, tracking the highlight, and saving selection
+function saveIrritated(irritatedValue) {
+    // Save selection to session memory instead of persistent local memory
+    sessionStorage.setItem("userIrritatedFrequency", irritatedValue);
+
+    // Remove selected state from all cards on this page
+    document.querySelectorAll('.cute-square-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+
+    // Add the vibrant pink border immediately to the clicked card
+    const clickedElement = document.querySelector(`.cute-square-card[data-value="${irritatedValue}"]`);
+    if (clickedElement) {
+        clickedElement.classList.add('selected');
+    }
+    
+    // Smooth 150ms delay to let the animation show before forwarding
+    setTimeout(function() {
+        window.location.href = "/question4";
+    }, 150); 
+}
+
+// 2. Automatically preserves the pink border when clicking "Back" from Question 4
+window.addEventListener("pageshow", function(event) {
+    const savedIrritated = sessionStorage.getItem("userIrritatedFrequency");
+
+    if (savedIrritated) {
+        // Clear any lingering active states
+        document.querySelectorAll('.cute-square-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+
+        // Re-apply the vibrant pink selection border
+        const matchedButton = document.querySelector(`.cute-square-card[data-value="${savedIrritated}"]`);
+        if (matchedButton) {
+            matchedButton.classList.add('selected');
+        }
+    }
+});
+</script>
+
+</body>
+</html>

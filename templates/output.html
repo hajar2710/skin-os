@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinOS - Your Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+    <!-- Load Poppins font family to match your style guide specifications -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ✨ Centered Navigation Header (Imported from frontpage2) -->
+    <header class="navbar">
+        <h1 class="logo-heading">Skin<span>OS</span></h1>
+        <p class="logo-subtext">Your Skin. Your Code. Your Routine.</p>
+    </header>
+
+    <div class="output-page-container">
+        
+        <!-- SECTION 1: SKIN ANALYSIS PROFILE -->
+        <section class="output-section">
+            <h2 class="section-title">Your Skin Analysis</h2>
+            <div class="analysis-block">
+                <img src="{{ url_for('static', filename=user_skin_image_url.replace('/static/', '')) }}" alt="Skin Condition" class="analysis-image">
+                
+                <div class="analysis-text">
+                    <span class="skin-type-badge">{{ user_skin_type }} Skin</span>
+                    <p style="color: #4a5568; line-height: 1.7; margin: 0;">
+                        {{ skin_type_explanation }}
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INGREDIENTS MATRIX -->
+        <section class="output-section">
+            <h2 class="section-title">Recommended Key Ingredients</h2>
+            <div class="ingredients-grid">
+                
+                {% for ingredient in recommended_ingredients %}
+                <div class="ingredient-card">
+                    <div class="ingredient-name">{{ ingredient.name }}</div>
+                    <p style="font-size: 13px; color: #718096; margin: 0; line-height: 1.5;">
+                        {{ ingredient.benefit }}
+                    </p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: CUSTOM ROUTINE -->
+        <section class="output-section">
+            <h2 class="section-title">Your Custom Skincare Routine</h2>
+            
+            <div class="routine-general-explanation">
+    <p>
+        {{ routine_explanation }}
+    </p>
+</div>
+
+            <div class="products-grid">
+                
+                <!-- STEP 1 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-step-tag">Step 1: Cleanser</div>
+                        <img src="{{ url_for('static', filename=products.cleanser.image.replace('/static/', '')) }}" alt="Cleanser" class="product-image">
+                        <h3 class="product-name">{{ products.cleanser.brand }}</h3>
+                        <p style="font-size: 13px; color: #718096; margin: 0;">{{ products.cleanser.name }}</p>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-step-tag">Step 2: Treat</div>
+                        <img src="{{ url_for('static', filename=products.serum.image.replace('/static/', '')) }}" alt="Serum/Toner" class="product-image">
+                        <h3 class="product-name">{{ products.serum.brand }}</h3>
+                        <p style="font-size: 13px; color: #718096; margin: 0;">{{ products.serum.name }}</p>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-step-tag">Step 3: Moisturize</div>
+                        <img src="{{ url_for('static', filename=products.moisturizer.image.replace('/static/', '')) }}" alt="Moisturizer" class="product-image">
+                        <h3 class="product-name">{{ products.moisturizer.brand }}</h3>
+                        <p style="font-size: 13px; color: #718096; margin: 0;">{{ products.moisturizer.name }}</p>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-step-tag">Step 4: Protect</div>
+                        <img src="{{ url_for('static', filename=products.sunscreen.image.replace('/static/', '')) }}" alt="Sunscreen" class="product-image">
+                        <h3 class="product-name">{{ products.sunscreen.brand }}</h3>
+                        <p style="font-size: 13px; color: #718096; margin: 0;">{{ products.sunscreen.name }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="restart-action-container">
+            <a href="javascript:void(0);" onclick="clearAndRestart()" class="btn-restart">Try Analysis Again</a>
+        </div>
+    </div>
+
+    <script>
+function clearAndRestart() {
+    // 1. Wipe out everything stored in sessionStorage (feel, shiny areas, irritation levels)
+    sessionStorage.clear();
+    
+    // 2. Clear any lingering variables from localStorage (like your older userAge key)
+    localStorage.removeItem("userAge");
+    localStorage.removeItem("userFeel");
+    localStorage.removeItem("userShinyArea");
+    localStorage.removeItem("userIrritatedFrequency");
+
+    // 3. Send the user back to Question 1 with a completely fresh state
+    window.location.href = "/question1";
+}
+</script>
+
+</body>
+</html>

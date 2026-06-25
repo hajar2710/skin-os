@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Analysis - Question 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='question2.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="quiz-page">
+  
+  <nav class="glass-nav">
+    <span class="nav-logo">Skin<span>OS</span></span>
+            <div class="stepper-wrapper">
+                <div class="step-bubble">Question 1</div>
+                <div class="step-line"></div>
+                <div class="step-bubble active">Question 2</div>
+                <div class="step-line"></div>
+                <div class="step-bubble">Question 3</div>
+                <div class="step-line"></div>
+                <div class="step-bubble">Question 4</div>
+            </div>
+    </nav>
+    <div class="quiz-container">
+
+    <div class="question-section">
+        <h2 class="quiz-question">How does your skin feel after 30 minutes of cleansing?</h2>
+
+        <form id="feelForm">
+            <div class="options-container">
+                <div class="cards-grid-container">
+                <button type="button" data-value="tight/dry" onclick="saveFeel('tight/dry')" class="cute-square-card">
+                    <h3 class="card-title">Tight/Dry</h3>
+                    <p class="card-detail">feels parched, flaky, or stretched, especially after cleansing</p>
+                </button>
+
+                <button type="button" data-value="shiny" onclick="saveFeel('shiny')" class="cute-square-card">
+                    <h3 class="card-title">Oily/Shiny</h3>
+                    <p class="card-detail">feels greasy or has a shiny appearance, especially after cleansing</p>
+                </button>
+
+                <button type="button" data-value="comfortable" onclick="saveFeel('comfortable')" class="cute-square-card">
+                    <h3 class="card-title">Comfortable</h3>
+                    <p class="card-detail">feels smooth, resilient, and clear with no noticeable irritation</p>
+                </button>
+
+                <button type="button" data-value="irritated" onclick="saveFeel('irritated')" class="cute-square-card">
+                    <h3 class="card-title">Irritated</h3>
+                    <p class="card-detail">feels red, itchy, or inflamed, especially after cleansing</p>
+                </button>
+
+            </div>
+        </form>
+        
+    </div>
+
+    <div class="navigation-buttons">
+        <a href="/question1" class="btn btn-secondary">Back</a>
+    </div>
+</div>
+
+<script>
+// 1. This handles the click, highlights the card, and routes to the correct next page
+function saveFeel(feelValue) {
+    // Save selection to browser session memory
+    sessionStorage.setItem("userFeel", feelValue);
+
+    // Remove the pink border state from all cards on this page
+    document.querySelectorAll('.cute-square-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+
+    // Find the exact square card matching the chosen value
+    const clickedElement = document.querySelector(`.cute-square-card[data-value="${feelValue}"]`);
+    if (clickedElement) {
+        clickedElement.classList.add('selected');
+    }
+    
+    // Give the browser 150ms to show the vibrant pink border before moving on
+    setTimeout(function() {
+        if (feelValue === "shiny") {
+            window.location.href = "/question3_shiny";
+        } else if (feelValue === "irritated") {
+            window.location.href = "/question3_irritated";
+        } else {
+            // Both 'tight/dry' and 'comfortable' redirect straight to question 4
+            window.location.href = "/question4";
+        }
+    }, 150); 
+}
+
+// 2. This checks your session memory whenever a user clicks "Back" to return to this page
+window.addEventListener("pageshow", function(event) {
+    const savedFeel = sessionStorage.getItem("userFeel");
+
+    if (savedFeel) {
+        // Clear old selections
+        document.querySelectorAll('.cute-square-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+
+        // Re-apply the vibrant pink border to the cached choice
+        const matchedButton = document.querySelector(`.cute-square-card[data-value="${savedFeel}"]`);
+        if (matchedButton) {
+            matchedButton.classList.add('selected');
+        }
+    }
+});
+</script>
+
+</body>
+</html>

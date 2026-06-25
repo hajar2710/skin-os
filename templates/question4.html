@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Analysis - Question 4</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='question4.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="quiz-page">
+  
+    <nav class="glass-nav">
+        <span class="nav-logo">Skin<span>OS</span></span>
+        <div class="stepper-wrapper">
+            <div class="step-bubble">Question 1</div>
+            <div class="step-line"></div>
+            <div class="step-bubble">Question 2</div>
+            <div class="step-line"></div>
+            <div class="step-bubble">Question 3</div>
+            <div class="step-line"></div>
+            <div class="step-bubble active">Question 4</div>
+        </div>
+    </nav>
+
+    <div class="quiz-container">
+        <div class="question-section">
+            <h2 class="quiz-question">What other skin problems you currently have?</h2>
+            <p class="quiz-subtext">Select your main skin concern</p>
+
+           <form id="concernForm">
+            <div class="cards-grid-container ">
+                
+                <button type="button" data-value="acne" class="cute-square-card">
+                    <h3 class="card-title">Acne & Congestion</h3>
+                    <p class="card-detail">Breakouts, blemishes, blackheads, or clogged pores that need clearing.</p>
+                </button>
+
+                <button type="button" data-value="texture" class="cute-square-card">
+                    <h3 class="card-title">Texture & Pores</h3>
+                    <p class="card-detail">Uneven surface, rough patches, bumpy skin, or visibly enlarged pores.</p>
+                </button>
+
+                <button type="button" data-value="tone" class="cute-square-card">
+                    <h3 class="card-title">Tone & Radiance</h3>
+                    <p class="card-detail">Dullness, dark spots, hyperpigmentation, or uneven skin coloration.</p>
+                </button>
+
+                <button type="button" data-value="aging" class="cute-square-card">
+                    <h3 class="card-title">Aging & Firmness</h3>
+                    <p class="card-detail">Fine lines, deeper wrinkles, loss of elasticity, or sagging skin texture.</p>
+                </button>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="navigation-buttons">
+        <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+        <button id="finish-btn" class="btn btn-primary disabled" onclick="submitAnalysis()" disabled>Finish Analysis</button>
+    </div>
+</div>
+
+<script>
+const cards = document.querySelectorAll('.cute-square-card');
+const finishBtn = document.getElementById('finish-btn');
+
+// 1. Handle Selection Clicks (Manual control mode)
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        // Clear selected status from all options
+        cards.forEach(c => c.classList.remove('selected'));
+
+        // Highlight the current card with your vibrant pink border class
+        card.classList.add('selected');
+
+        // Unlock the submit execution button so the user can physically click it
+        if (finishBtn) {
+            finishBtn.classList.remove('disabled');
+            finishBtn.removeAttribute('disabled');
+        }
+
+        // ❌ The auto-advance setTimeout was deleted from here!
+    });
+});
+
+// 2. Fetch Session Data and Redirect (Only triggers when clicking the "Finish Analysis" button)
+function submitAnalysis() {
+    const activeCard = document.querySelector('.cute-square-card.selected');
+    if (!activeCard) return; // Keeps the button safe if nothing is checked
+
+    const selectedConcern = activeCard.getAttribute('data-value');
+
+    // Read choices from sessionStorage
+    const age = sessionStorage.getItem("userAge") || ""; 
+    const feel = sessionStorage.getItem("userFeel") || "";
+    const shinyArea = sessionStorage.getItem("userShinyArea") || "";
+    const redness = sessionStorage.getItem("userIrritatedFrequency") || "";
+
+    // Forward parameters straight to your /output engine
+    window.location.href = `/output?age=${age}&feel=${feel}&shiny_area=${shinyArea}&redness=${redness}&concern=${selectedConcern}`;
+}
+
+// 3. Keep selections visually highlighted if the user clicks back from the output page
+window.addEventListener("pageshow", function(event) {
+    const activeCard = document.querySelector('.cute-square-card.selected');
+    
+    if (activeCard && finishBtn) {
+        finishBtn.classList.remove('disabled');
+        finishBtn.removeAttribute('disabled');
+    }
+});
+</script>
+</body>
+</html>

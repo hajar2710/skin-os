@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Analysis - Question 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='question1.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="quiz-page">
+  
+    <nav class="glass-nav">
+        <span class="nav-logo">Skin<span>OS</span></span>
+        <div class="stepper-wrapper">
+            <div class="step-bubble active">Question 1</div>
+            <div class="step-line"></div>
+            <div class="step-bubble">Question 2</div>
+            <div class="step-line"></div>
+            <div class="step-bubble">Question 3</div>
+            <div class="step-line"></div>
+            <div class="step-bubble">Question 4</div>
+        </div>
+    </nav>
+
+    <div class="quiz-container">
+        <div class="question-section">
+            <h2 class="quiz-question">What is your age range?</h2>
+
+            <form id="ageForm">
+                <div class="options-container">
+                    
+                    <button type="button" data-value="teen" onclick="saveAge('teen')" class="cute-split-button-btn">
+                        <span class="button-label">Teen</span>
+                        <div class="button-detail">
+                            <span class="age-range">15 to 19</span>
+                        </div>
+                    </button>
+
+                    <button type="button" data-value="young_adult" onclick="saveAge('young_adult')" class="cute-split-button-btn">
+                        <span class="button-label">Young Adult</span>
+                        <div class="button-detail">
+                            <span class="age-range">20 to 39</span>
+                        </div>
+                    </button>
+
+                    <button type="button" data-value="mature_adult" onclick="saveAge('mature_adult')" class="cute-split-button-btn">
+                        <span class="button-label">Mature Adult</span>
+                        <div class="button-detail">
+                            <span class="age-range">40 & above</span>
+                        </div>
+                    </button>
+
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+    <script>
+// 1. This handles the click, saves data, highlights the button, and moves forward
+function saveAge(ageValue) {
+    // FIX: Changed from localStorage to sessionStorage
+    sessionStorage.setItem("userAge", ageValue);
+
+    document.querySelectorAll('.cute-split-button-btn').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+
+    const clickedElement = document.querySelector(`.cute-split-button-btn[data-value="${ageValue}"]`);
+    if (clickedElement) {
+        clickedElement.classList.add('selected');
+    }
+    
+    setTimeout(function() {
+        window.location.href = "/question2";
+    }, 150); 
+}
+
+// 2. This runs EVERY time a page is displayed, even when clicking the "Back" button!
+window.addEventListener("pageshow", function(event) {
+    // FIX: Changed from localStorage to sessionStorage
+    const savedAge = sessionStorage.getItem("userAge");
+
+    if (savedAge) {
+        document.querySelectorAll('.cute-split-button-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        const matchedButton = document.querySelector(`.cute-split-button-btn[data-value="${savedAge}"]`);
+        if (matchedButton) {
+            matchedButton.classList.add('selected');
+        }
+    }
+});
+</script>
+
+</body>
+</html>

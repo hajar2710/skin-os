@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="home-zoom">
+<!-- Header Section -->
+    <header class="navbar">
+        <h1 class="logo-heading">Skin<span>OS</span></h1>
+        <p class="logo-subtext">Your Skin. Your Code. Your Routine.</p>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+           <h1>Skin<span>Os</span></h1>
+           <h2>Your personalized skincare analysis and recommendation assistant</h2>
+    
+           <p class="hero-desc">This system is designed to help users identify their skin type and skin condition through a simple question-and-answer session. Based on the analysis, the system will recommend suitable skincare products and important ingredients that match the user’s skin needs for better skincare results.</p>    
+           <h3 class="features-title">Our System Features Include:</h3>
+    
+           <ul class="features-list">
+              <li>- Skin type analysis</li>
+              <li>- Skin problem identification</li>
+              <li>- Targeted product recommendations</li>
+           </ul>
+        </div>
+        <div class="hero-image">
+            <div class="image-box"></div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Instructions Before Starting Analysis</h2>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/front-page-image-2.png') }}" alt="Skin Type Analysis" class="card-img">
+            <h3>1) Clean your face with a gentle cleanser</h3>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/front-page-image-3.png') }}" alt="Skin Problem" class="card-img">
+            <h3>2) Pat your face dry with a clean towel</h3>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/front-page-image-4.png') }}" alt="Product Recommendations" class="card-img">
+            <h3>3) Wait for your skin to dry completely for at least 30 minutes before starting the analysis</h3>
+        </div>
+        <div class="start-buttons">
+                <a href="/question1" class="start-quiz-btn">Start Analysis</a>
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SkinOS. Crafted with &hearts;</p>
+    </footer>
+ </div>
+</body>
+</html>
