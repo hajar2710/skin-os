@@ -120,12 +120,12 @@ def output_page():
 
 SKIN_TYPES = {
     "Dry": {
-        "name": "Dry Skin",
+        "name": "Dry",
         "description": "Your skin often feels tight, parched, or even a bit flaky, especially after washing your face. It struggles to hold onto moisture, which can make it look a little dull or rough. To bring back its natural glow, this skin type loves rich, hydrating creams that lock in moisture.",
         "image_url": "/static/images/skin_dry.png" # Add your image paths here!
     },
     "Oily": {
-        "name": "Oily Skin",
+        "name": "Oily",
         "description": "Your skin produces extra natural oils, which often leaves your face looking shiny or feeling slick by lunchtime. You might notice larger, more visible pores, and you are likely more prone to breakouts or blackheads. It thrives on lightweight, gel-based products that balance oil without clogging your skin.",
         "image_url": "/static/images/skin_oily.png"
     },
@@ -135,12 +135,12 @@ SKIN_TYPES = {
         "image_url": "/static/images/skin_combination.png"
     },
     "Normal": {
-        "name": "Normal Skin",
+        "name": "Normal",
         "description": "Your skin is naturally well-balanced, meaning it is neither too oily nor too dry. You rarely experience severe breakouts, flaking, or a tight feeling, and your pores are generally small and unnoticeable. Because your skin is already quite happy, your main goal is just to keep it clean and protected.",
         "image_url": "/static/images/skin_normal.png"
     },
     "Sensitive": {
-        "name": "Sensitive Skin",
+        "name": "Sensitive",
         "description": "Your skin reacts easily to new products, weather changes, or certain ingredients, often turning red, itchy, or stinging. It has a weaker natural shield, making it easily overwhelmed or irritated. This skin type does best with super gentle, fragrance-free products that focus on calming and soothing.",
         "image_url": "/static/images/skin_sensitive.png"
     }
