@@ -6,11 +6,11 @@
 }
 
 :root {
-    --bg-color: #fce4e8;       /* Soft pinkish-white background */
-    --primary-pink: #FF85A2;   /* Vibrant pastel pink */
-    --light-pink: #FFB3C6;     /* Soft accent pink */
-    --dark-maroon: #932c2c;    /* Deep magenta/berry for high-contrast text */
-    --text-main: #4A3E41;      /* Soft dark charcoal/brown for readable body text */
+    --bg-color: #fce4e8;       
+    --primary-pink: #FF85A2;   
+    --light-pink: #FFB3C6;     
+    --dark-maroon: #932c2c;    
+    --text-main: #4A3E41;      
     --white: #FFFFFF;
 }
 
