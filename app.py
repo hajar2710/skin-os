@@ -2,11 +2,11 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app) # Allows your HTML frontend to send requests to this API
+CORS(app) 
 
 @app.route('/')
 def frontpage():
-    return render_template('frontpage2.html') # Loads your landing page
+    return render_template('frontpage2.html') 
 
 @app.route('/question1')
 def q1():
@@ -30,18 +30,15 @@ def q4():
 
 @app.route('/output')
 def output_page():
-    # 1. Pull quiz results from the URL parameters
     age = request.args.get('age')
     raw_feel = request.args.get('feel')
     shiny_area = request.args.get('shiny_area')
     redness = request.args.get('redness')
     concern = request.args.get('concern')
 
-    # Fallback to prevent crashes if someone visits /output directly without a quiz
     if not age or not raw_feel or not concern:
         return "Quiz data missing. Please complete the quiz first.", 400
 
-    # 2. Format the "Feel" variable exactly like your rule engine expects
     feel_condition = ""
     if raw_feel == "tight/dry":
         feel_condition = "tight/dry"
@@ -52,7 +49,6 @@ def output_page():
     elif raw_feel == "irritated":
         feel_condition = "red_very_often" if redness == "very often" else ("red_sometimes" if redness == "sometimes" else "red_rarely")
 
-    # 3. Match the configuration against your RULES database
     matched_rule = None
     for rule in RULES:
         if rule['age'] == age and rule['feel'] == feel_condition and rule['concern'] == concern:
@@ -62,11 +58,9 @@ def output_page():
     if not matched_rule:
         return f"No skin profile matches these parameters (Age: {age}, Feel: {feel_condition}, Concern: {concern}).", 400
 
-    # 4. Extract data items from database mapping configurations
     skin_type_data = SKIN_TYPES[matched_rule['type']]
     routine_data = ROUTINES[matched_rule['routine_id']]
     
-    # Format the ingredients list to match Jinja's expected loop format
     recommended_ingredients = []
     for ing_id in matched_rule['ingredients']:
         recommended_ingredients.append({
@@ -74,13 +68,11 @@ def output_page():
             "benefit": INGREDIENTS[ing_id]["desc"]
         })
 
-    # Pull accurate product names out of the routine dataset
     c_name = routine_data['cleanser']
     s_name = routine_data['toner_serum']
     m_name = routine_data['moisturizer']
     sun_name = routine_data['sunscreen']
 
-    # 5. Build the context dictionary matching your HTML layout perfectly (.brand, .name, .image)
     template_products = {
         "cleanser": {
             "brand": PRODUCTS.get(c_name, {}).get("brand", "Generic"), 
@@ -104,7 +96,6 @@ def output_page():
         }
     }
 
-    # 6. Safely render out the template with all variables applied!
     return render_template(
         'output.html',
         user_skin_type=skin_type_data['name'],
@@ -115,8 +106,7 @@ def output_page():
         routine_explanation=routine_data['desc']
     )
 # ==========================================
-# 1. THE DATABASE (WITH IMAGE URLS ADDED)
-# ==========================================
+# 1. THE DATABASE 
 
 SKIN_TYPES = {
     "Dry": {
@@ -159,7 +149,6 @@ INGREDIENTS = {
     10: {"name": "Benzoyl Peroxide", "desc": "Targets and kills acne-causing bacteria directly."}
 }
 
-# Mapping products to their routine steps, with images
 PRODUCTS = {
     # Skintific Products
     "Skintific 5X Ceramide Low pH Cleanser": {"type": "Cleanser", "brand": "Skintific", "image_url": "/static/images/skintific_low_ph_cleanser.png"},
@@ -267,9 +256,7 @@ ROUTINES = {
 
 # ==========================================
 # 2. THE RULE ENGINE
-# ==========================================
-# Instead of 84 IF statements, we store rules as a list of dictionaries.
-# I have added the first few rules here as an example. You will paste the rest here.
+
 RULES = [
     # ---------------------------------------------------------
     # PART 1 : TEEN (AGE 15 – 19)
@@ -409,10 +396,9 @@ RULES = [
 
 # ==========================================
 # 3. THE API ENDPOINT
-# ==========================================
+
 @app.route('/api/evaluate', methods=['POST'])
 def evaluate_skin():
-    # 1. Get data from the frontend
     user_data = request.json
     
     age = user_data.get('age')
@@ -468,5 +454,4 @@ def evaluate_skin():
     })
 
 if __name__ == '__main__':
-    # Running with debug=True means it auto-restarts when you save!
     app.run(debug=True, port=5000)
