@@ -63,43 +63,33 @@
 const cards = document.querySelectorAll('.cute-square-card');
 const finishBtn = document.getElementById('finish-btn');
 
-// 1. Handle Selection Clicks (Manual control mode)
 cards.forEach(card => {
     card.addEventListener('click', () => {
-        // Clear selected status from all options
         cards.forEach(c => c.classList.remove('selected'));
 
-        // Highlight the current card with your vibrant pink border class
         card.classList.add('selected');
 
-        // Unlock the submit execution button so the user can physically click it
         if (finishBtn) {
             finishBtn.classList.remove('disabled');
             finishBtn.removeAttribute('disabled');
         }
-
-        // ❌ The auto-advance setTimeout was deleted from here!
     });
 });
 
-// 2. Fetch Session Data and Redirect (Only triggers when clicking the "Finish Analysis" button)
 function submitAnalysis() {
     const activeCard = document.querySelector('.cute-square-card.selected');
-    if (!activeCard) return; // Keeps the button safe if nothing is checked
+    if (!activeCard) return; 
 
     const selectedConcern = activeCard.getAttribute('data-value');
 
-    // Read choices from sessionStorage
     const age = sessionStorage.getItem("userAge") || ""; 
     const feel = sessionStorage.getItem("userFeel") || "";
     const shinyArea = sessionStorage.getItem("userShinyArea") || "";
     const redness = sessionStorage.getItem("userIrritatedFrequency") || "";
 
-    // Forward parameters straight to your /output engine
     window.location.href = `/output?age=${age}&feel=${feel}&shiny_area=${shinyArea}&redness=${redness}&concern=${selectedConcern}`;
 }
 
-// 3. Keep selections visually highlighted if the user clicks back from the output page
 window.addEventListener("pageshow", function(event) {
     const activeCard = document.querySelector('.cute-square-card.selected');
     
