@@ -1,8 +1,8 @@
-/* --- Global Configuration & Design System Variables --- */
+
 :root {
-    --bg-color: #fce4e8;       /* Soft pinkish-white background from frontpage */
-    --primary-pink: #FF85A2;   /* Vibrant pastel pink */
-    --text-main: #4A3E41;      /* Soft dark charcoal color */
+    --bg-color: #fce4e8;      
+    --primary-pink: #FF85A2;   
+    --text-main: #4A3E41;     
     --white: #FFFFFF;
 }
 
@@ -10,11 +10,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color); /* Updated background to your brand's soft pink */
+    background-color: var(--bg-color); 
     color: var(--text-main);
 }
 
-/* --- Centered Navigation Header Layout (Imported from style2.css) --- */
 .navbar {
     display: flex;
     flex-direction: column;   
@@ -51,7 +50,6 @@ body {
     text-align: center;
 }
 
-/* --- Global Output Layout --- */
 .output-page-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -67,7 +65,6 @@ body {
     border: 1px solid #f0edf0;
 }
 
-/* FIX: Centered the title for each distinct output section module */
 .section-title {
     font-size: 24px;
     color: #333333;
@@ -77,7 +74,6 @@ body {
     text-align: center; 
 }
 
-/* --- Global Skincare Routine Introduction Paragraph --- */
 .routine-general-explanation {
     text-align: justify;
     max-width: 800px;
@@ -91,7 +87,6 @@ body {
     border-left: 4px solid var(--primary-pink);
 }
 
-/* --- Section 1: Skin Analysis --- */
 .analysis-block {
     display: flex;
     gap: 30px;
@@ -121,7 +116,6 @@ body {
     margin-bottom: 12px;
 }
 
-/* --- Section 2: Ingredients Grid (3 Columns) --- */
 .ingredients-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -143,7 +137,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* --- Section 3: Product Suggestions Grid (4 Columns) --- */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -185,12 +178,12 @@ body {
     margin: 5px 0;
 }
 
-/* --- Try Analysis Again Action Area --- */
+
 .restart-action-container {
     display: flex;
-    justify-content: center;   /* Centers the button horizontally */
+    justify-content: center;   
     margin-top: 10px;
-    margin-bottom: 30px;       /* Adds breathing space at the bottom of the page */
+    margin-bottom: 30px;      
     width: 100%;
 }
 
@@ -200,25 +193,25 @@ body {
     justify-content: center;
     text-decoration: none;
     
-    background-color: var(--primary-pink); /* Reuses your brand pastel pink */
+    background-color: var(--primary-pink); 
     color: var(--white);
     padding: 14px 36px;
     font-size: 16px;
     font-weight: 600;
-    border-radius: 50px;                   /* Perfect round pill alignment */
+    border-radius: 50px;                   
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(255, 133, 162, 0.2);
     transition: all 0.2s ease-in-out;
 }
 
-/* Elegant lift response when users hover over it */
+
 .btn-restart:hover {
     transform: translateY(-2px);
-    background-color: #fc8faa;             /* Matches your hover pink signature color */
+    background-color: #fc8faa;            
     box-shadow: 0 6px 20px rgba(252, 143, 170, 0.4);
 }
 
-/* --- Responsive Adjustments --- */
+
 @media (max-width: 768px) {
     .ingredients-grid {
         grid-template-columns: 1fr;
