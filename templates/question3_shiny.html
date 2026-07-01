@@ -52,39 +52,31 @@
 </div>
 
 <script>
-// 1. Handles clicking a card, tracking the highlight, and saving selection
 function saveShiny(shinyValue) {
-    // Save selection to session memory instead of persistent local memory
     sessionStorage.setItem("userShinyArea", shinyValue);
 
-    // Remove selected state from all cards on this page
     document.querySelectorAll('.cute-square-card').forEach(card => {
         card.classList.remove('selected');
     });
 
-    // Add the vibrant pink border immediately to the clicked card
     const clickedElement = document.querySelector(`.cute-square-card[data-value="${shinyValue}"]`);
     if (clickedElement) {
         clickedElement.classList.add('selected');
     }
     
-    // Smooth 150ms delay to let the animation show before forwarding
     setTimeout(function() {
         window.location.href = "/question4";
     }, 150); 
 }
 
-// 2. Automatically preserves the pink border when clicking "Back" from Question 4
 window.addEventListener("pageshow", function(event) {
     const savedShiny = sessionStorage.getItem("userShinyArea");
 
     if (savedShiny) {
-        // Clear any lingering active states
         document.querySelectorAll('.cute-square-card').forEach(card => {
             card.classList.remove('selected');
         });
 
-        // Re-apply the vibrant pink selection border
         const matchedButton = document.querySelector(`.cute-square-card[data-value="${savedShiny}"]`);
         if (matchedButton) {
             matchedButton.classList.add('selected');
