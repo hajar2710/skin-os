@@ -1,19 +1,14 @@
-/*QUESTION PAGE STYLE*/
-/* Base Reset & Styling */
-/* ==========================================================================
-   Question Pages Stylesheet
-   ========================================================================== */
 
 :root {
-    --bg-color: #fce4e8;       /* Soft pinkish-white background */
-    --primary-pink: #FF85A2;   /* Vibrant pastel pink */
-    --light-pink: #FFB3C6;     /* Soft accent pink */
-    --dark-maroon: #932c2c;      /* Deep magenta/berry for high-contrast text */
-    --text-main: #4A3E41;      /* Soft dark charcoal/brown for readable body text */
+    --bg-color: #fce4e8;       
+    --primary-pink: #FF85A2;   
+    --light-pink: #FFB3C6;     
+    --dark-maroon: #932c2c;      
+    --text-main: #4A3E41;      
     --white: #FFFFFF;
 }
 
-/* Base Reset & Shared Typography */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'Poppins', sans-serif;
     margin: 0;
@@ -22,8 +17,6 @@ body {
 }
 
 
-
-/* Applies the soft pink background and centers the quiz box */
 .quiz-page {
     background-color: #fce4e8; 
     display: flex;
@@ -33,15 +26,14 @@ body {
 }
 
 .quiz-question {
-    text-align: center;       /* 👈 Horizontally centers the text itself */
-    margin: 0 auto 30px auto; /* 👈 Centers the element container and adds room below it */
-    font-size: 28px;          /* Clean, legible size */
+    text-align: center;       
+    margin: 0 auto 30px auto; 
+    font-size: 28px;          
     font-weight: 700;
     color: var(--text-main);  
-    width: 100%;              /* Ensures it spans the full box width to align correctly */
+    width: 100%;              
 }
 
-/* The White Card Box containing the quiz elements */
 .quiz-container {
     background: #ffffff;
     padding: 40px;
@@ -53,7 +45,6 @@ body {
     
 }
 
-/* --- Question Layout --- */
 .question-section h2 {
     font-size: 24px;
     margin-bottom: 8px;
@@ -66,7 +57,6 @@ body {
     font-size: 15px;
 }
 
-/* --- Card Selection Grid --- */
 .options-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -79,13 +69,11 @@ body {
     cursor: pointer;
 }
 
-/* Hide standard, default radio button browser circle */
 .option-card input[type="radio"] {
     position: absolute;
     opacity: 0;
 }
 
-/* Default state of the styling card */
 .card-content {
     background: #fff;
     border: 2px solid #f0f0f0;
@@ -105,13 +93,11 @@ body {
     font-size: 28px;
 }
 
-/* Hover over a card */
 .option-card:hover .card-content {
     border-color: #cbd5e1;
     transform: translateY(-2px);
 }
 
-/* State when the card is clicked/selected */
 .option-card input[type="radio"]:checked + .card-content {
     border-color: #FF85A2; /* Vibrant pink border */
     background-color: #fff0f3; /* Gentle pink tint inside the card */
@@ -127,49 +113,44 @@ body {
     align-items: center;
 }
 
-/* --- Inactive Glass Tabs --- */
 .step-bubble {
-    height: 34px;                  /* Keep a clean, standard height */
-    padding: 0 16px;               /* 👈 Generous horizontal padding so text doesn't hit the edges */
-    min-width: 90px;               /* 👈 Ensures a consistent base width for every block */
-    border-radius: 8px;            /* Sleek rounded corners */
+    height: 34px;                  
+    padding: 0 16px;               
+    min-width: 90px;               
+    border-radius: 8px;            
     
-    /* Soft pink glass formula */
     background: rgba(253, 218, 224, 0.4); 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.7);
     
-    color: #b1536b;                /* Easy-to-read dark rose text */
+    color: #b1536b;               
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 13px;               /* Slightly smaller font to fit phrases perfectly */
+    font-size: 13px;              
     font-weight: 600;
-    white-space: nowrap;           /* 👈 Prevents the words from wrapping onto two lines */
+    white-space: nowrap;          
     transition: all 0.3s ease;
 }
 
-/* --- Active Step (Vibrant Solid Pink Accent) --- */
+
 .step-bubble.active {
-    background: var(--primary-pink) !important; /* 👈 Back to your beautiful solid pink! */
-    color: #ffffff !important;                   /* Crisp white text so "Question 1" pops */
+    background: var(--primary-pink) !important; 
+    color: #ffffff !important;                   
     border: 2px solid var(--primary-pink) !important;
     
-    /* A lovely soft pink glow to keep that cute aesthetic */
-    box-shadow: 0 4px 15px rgba(255, 133, 162, 0.4) !important; 
-    
-    transform: scale(1.05); /* Keeps the slight pop-out effect */
+
+    box-shadow: 0 4px 15px rgba(255, 133, 162, 0.4) !important;  
+    transform: scale(1.05); 
 }
 
-/* Connecting Line between bubbles */
 .step-line {
     width: 20px;
     height: 2px;
     background: rgba(255, 255, 255, 0.5);
 }
 
-/* --- Direct Glass Navigation Bar --- */
 .glass-nav {
     position: fixed !important;
     top: 0 !important;
@@ -181,7 +162,7 @@ body {
     align-items: center !important;
     box-sizing: border-box !important;
     
-    padding-left: 24px !important;  /* Keeps logo right at the left edge */
+    padding-left: 24px !important;  
     padding-top: 15px;
     padding-bottom: 15px;
 
@@ -192,45 +173,44 @@ body {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
 }
 
-/* --- Stepper Bubbles Centered --- */
+
 .stepper-wrapper {
     position: absolute !important;
     left: 50% !important;
-    transform: translateX(-50%) !important; /* 👈 This locks the bubbles to the exact center of the screen */
+    transform: translateX(-50%) !important; 
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* --- Navigation Logo Style for SkinOS --- */
+
 .nav-logo {
-    font-size: 32px;            /* Clean size for a fixed top bar */
+    font-size: 32px;            
     font-weight: 650;
-    color: var(--text-main);    /* Controls the color for "Skin" */
+    color: var(--text-main);    
     line-height: 1.1;
     white-space: nowrap;
     font-family:'Poppins';
 }
 
-/* Pink accent color for the "OS" part */
+
 .nav-logo span {
-    color: var(--primary-pink);  /* Controls the color for "OS" */
+    color: var(--primary-pink);  
 }
 
-/* Container for spacing the buttons out vertically */
 .options-container {
     display: flex;
     flex-direction: column;
     gap: 10px; 
-    max-width: 500px; /* Snugs the buttons nicely to fit the white card */
+    max-width: 500px; 
     margin: 0 auto;
     padding: 10px 0;
 }
 
-/* --- The Base Button Wrapper --- */
+
 .cute-split-button-btn {
     display: flex;
-    align-items: stretch; /* Forces left and right columns to have the exact same height */
+    align-items: stretch; 
     cursor: pointer;
     border-radius: 50px;  
     overflow: hidden;     
@@ -250,10 +230,10 @@ body {
     margin-top: 15px;
 }
 
-/* 1. Left Side: Vibrant Pink Label (FIXED SELECTOR) */
+
 .cute-split-button-btn .button-label {
-    background-color: var(--primary-pink); /* Uses your main theme pink */
-    color: #090909; /* Crisp white text so it pops beautifully */
+    background-color: var(--primary-pink);
+    color: #090909; 
     font-size: 18px;
     font-weight: 700;
     
@@ -267,20 +247,19 @@ body {
     flex-shrink: 0;           
 }
 
-/* 2. Right Side: Soft Pastel Pink Detail Box (FIXED SELECTOR) */
 .cute-split-button-btn .button-detail {
-    background-color: #fed9e0; /* Gentle, soft pink tint */
+    background-color: #fed9e0; 
     padding: 18px 20px;        
     width: 60%;               
     
     display: flex;
     align-items: center;      
-    justify-content: flex-start; /* Aligns description cleanly to the left */
+    justify-content: flex-start; 
 }
 
-/* Age Text Style (FIXED SELECTOR) */
+
 .cute-split-button-btn .age-range {
-    color: #090909; /* Your professional dark charcoal color */
+    color: #090909; 
     font-size: 18px;
     font-weight: 700;
     text-align: center;
@@ -289,25 +268,20 @@ body {
     justify-content: center;
 }
 
-/* Hover feedback */
+
 .cute-split-button-btn:hover {
     transform: translateY(-2px); 
     box-shadow: 0 8px 20px rgba(255, 133, 162, 0.467); 
     filter: brightness(0.99);    
 }
 
-/* ==========================================================================
-   ✨ THE CSS CLICK SELECTION/FOCUS STATE
-   ========================================================================== */
 .cute-split-button-btn:focus,.cute-split-button-btn.selected {
     border-color: #FF1493 !important; 
     box-shadow: 0 8px 24px rgba(255, 133, 162, 0.35) !important; 
     transform: scale(1.01);
 }
 
-/* ==========================================================================
-   ✨ SEAMLESS PAGE TRANSITIONS (Fade-In Animation)
-   ========================================================================== */
+
 .quiz-container {
     animation: smoothPageEntrance 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     opacity: 0; 
