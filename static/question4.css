@@ -1,23 +1,20 @@
-/* ==========================================================================
-   ✨ SkinOS Question 3: Oily/Shiny - Layout Stylesheet
-   ========================================================================== */
+
 
 :root {
-    --bg-color: #fce4e8;       /* Soft pinkish-white background */
-    --primary-pink: #FF85A2;   /* Vibrant pastel pink */
-    --light-pink: #FFB3C6;     /* Soft accent pink */
-    --dark-maroon: #932c2c;    /* Deep magenta/berry for high-contrast text */
-    --text-main: #4A3E41;      /* Soft dark charcoal/brown for body text */
+    --bg-color: #fce4e8;       
+    --primary-pink: #FF85A2;   
+    --light-pink: #FFB3C6;     
+    --dark-maroon: #932c2c;    
+    --text-main: #4A3E41;      
     --white: #FFFFFF;
 }
 
-/* --- 1. Base Reset & Layout --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    padding-top: 80px !important; /* Forces breathing room below fixed header navbar */
+    padding-top: 80px !important; 
 }
 
 .quiz-page {
@@ -28,7 +25,6 @@ body {
     min-height: 100vh;
 }
 
-/* --- 2. Fixed Stepper Header Navigation Bar --- */
 .glass-nav {
     position: fixed !important;
     top: 0 !important;
@@ -40,7 +36,7 @@ body {
     align-items: center !important;
     box-sizing: border-box !important;
     
-    padding-left: 24px !important;  /* Keeps logo right at the left edge */
+    padding-left: 24px !important;  
     padding-top: 15px;
     padding-bottom: 15px;
 
@@ -67,7 +63,7 @@ body {
 .stepper-wrapper {
     position: absolute !important;
     left: 50% !important;
-    transform: translateX(-50%) !important; /* Locks bubbles to exact screen center */
+    transform: translateX(-50%) !important; 
     display: flex;
     align-items: center;
     gap: 12px;
@@ -93,16 +89,14 @@ body {
     transition: all 0.3s ease;
 }
 
-/* --- Active Step (Vibrant Solid Pink Accent) --- */
+
 .step-bubble.active {
-    background-color: #fc8faa !important; /* 👈 Hardcoded to match your beautiful button pink exactly! */
-    color: #ffffff !important;             /* Crisp white text so "Question 2" pops */
+    background-color: #fc8faa !important; 
+    color: #ffffff !important;            
     border: 2px solid #fc8faa !important;
-    
-    /* A lovely soft pink glow to keep that cute aesthetic */
     box-shadow: 0 4px 15px rgba(252, 143, 170, 0.4) !important; 
     
-    transform: scale(1.05); /* Keeps the slight pop-out effect */
+    transform: scale(1.05); 
 }
 
 .step-line {
@@ -111,7 +105,6 @@ body {
     background: rgba(255, 255, 255, 0.5);
 }
 
-/* --- 3. The Main Quiz White Container Card --- */
 .quiz-container {
     background: #ffffff;
     padding: 40px;
@@ -125,7 +118,7 @@ body {
 
 .quiz-question {
     text-align: center;       
-    margin: 40px auto 30px auto; /* Clean uniform spacing top and bottom */
+    margin: 40px auto 30px auto; 
     font-size: 28px;          
     font-weight: 700;
     color: var(--text-main);  
@@ -134,26 +127,25 @@ body {
 
 .quiz-subtext {
     font-size: 15px;
-    color: #8C7E82;             /* Soft, muted dark rose/grey for excellent readability */
-    text-align: center;         /* Centers the text perfectly under your main question */
-    margin-bottom: 28px;        /* Creates a clean breathing space right before the buttons start */
-    font-weight: 400;           /* Clean, light weight so it doesn't compete with the bold question */
-    line-height: 1.5;           /* Adds gentle spacing between text lines if it wraps */
-    max-width: 480px;           /* Prevents the text line from stretching too wide on desktop screens */
-    margin-left: auto;          /* Paired with margin-right to horizontally center the max-width block */
+    color: #8C7E82;             
+    text-align: center;         
+    margin-bottom: 28px;        
+    font-weight: 400;           
+    line-height: 1.5;           
+    max-width: 480px;           
+    margin-left: auto;          
     margin-right: auto;
 }
-/* --- 4. The Compact 2x2 Cards Grid Layout --- */
+
 .cards-grid-container {
     display: grid;
-    /* This forces the 2 columns to shrink-to-fit your cards instead of stretching wide */
     grid-template-columns: repeat(2,1fr); 
     gap: 20px; 
     width: 100%;
-    max-width: 500px;           /* Sets an elegant boundary for 3 cards across */
-    margin: 0 auto;             /* Centers the entire grid container inside the white box */
-    justify-content: center;    /* 🌟 Centers the columns horizontally */
-    align-content: center;      /* 🌟 Centers the rows vertically if needed */
+    max-width: 500px;           
+    margin: 0 auto;             
+    justify-content: center;    
+    align-content: center;      
     padding: 15px;
     box-sizing: border-box;
 }
@@ -161,32 +153,31 @@ body {
 .cute-square-card {
     display: flex;
     flex-direction: column;
-    align-items: center;        /* 🌟 Centers the image and text horizontally */
-    justify-content: center;     /* 🌟 Centers the content vertically inside the card */
-    text-align: center;         /* Forces the text lines to center wrap */
+    align-items: center;        
+    justify-content: center;     
+    text-align: center;         
     padding: 20px 12px;
     background: #ffffff;
     border: 3px solid #e2e8f0;
     border-radius: 12px;
     box-sizing: border-box;
-    width: 100%;                /* Allows it to fill its grid cell space evenly */
-    min-height: 160px;          /* Forces all cards to hold a uniform height */
+    width: 100%;                
+    min-height: 160px;         
 }
 
-/* 🖼️ Ensures your image scales down neatly inside the box */
 .card-image {
     width: 70px;
     height: 70px;
     border-radius: 12px;
     object-fit: cover;
-    margin: 0 auto 12px auto;   /* 🌟 Centers the image block with auto-margins */
+    margin: 0 auto 12px auto;  
     display: block;
 }
 
 .cute-square-card.active {
-    border-color: #FF85A2 !important; /* Your theme pink border */
-    background-color: #FFF5F7 !important; /* Soft tint background */
-    transform: translateY(-2px); /* Slight lift effect */
+    border-color: #FF85A2 !important; 
+    background-color: #FFF5F7 !important; 
+    transform: translateY(-2px); 
     box-shadow: 0 8px 20px rgba(255, 133, 162, 0.2);
 }
 
@@ -207,7 +198,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Card States (Hover and Click Selection Focus) */
 .cute-square-card:hover {
     transform: translateY(-3px);
     border-color: #cbd5e1;
@@ -215,19 +205,18 @@ body {
 }
 
 .cute-square-card:focus,.cute-square-card.selected {
-    border-color: #FF1493 !important;            /* Hot Pink Border Selection */
-    box-shadow: 0 10px 24px rgba(255, 20, 147, 0.3) !important; /* Hot Pink Glow Aura */
+    border-color: #FF1493 !important;            
+    box-shadow: 0 10px 24px rgba(255, 20, 147, 0.3) !important; 
     transform: scale(1.02);
 }
 
-/* --- 5. Navigation Row Buttons (Pinned to Left & Right Edges) --- */
 .navigation-buttons {
     display: flex;
     justify-content: space-between; 
     align-items: center;
     width: 100%;
     max-width: 100% !important;     
-    padding: 0 !important;          /* Removed padding so buttons touch the edge perfectly */
+    padding: 0 !important;         
     margin: 40px auto 10px auto;    
     box-sizing: border-box;
 }
@@ -244,7 +233,7 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     
     padding: 14px 24px;            
-    border-radius: 12px;           /* Modern square corner style */
+    border-radius: 12px;           
     min-width: 100px;              
 }
 
@@ -261,13 +250,12 @@ body {
     box-shadow: 0 4px 12px rgba(252, 143, 170, 0.2); 
 }
 
-/* When the next button is disabled */
 .btn-primary.disabled {
     background-color: #e2e8f0 !important;
     border-color: #cbd5e1 !important;
     color: #94a3b8 !important;
     cursor: not-allowed !important;
-    pointer-events: none; /* Block all mouse clicks completely */
+    pointer-events: none; 
     box-shadow: none !important;
 }
 
@@ -280,21 +268,15 @@ body {
     transform: translateY(0);
 }
 
-/* ==========================================================================
-   ✨ SEAMLESS PAGE TRANSITIONS (Fade-In Animation)
-   ========================================================================== */
-
-/* 1. Tell the main container to animate on page load */
 .quiz-container {
     animation: smoothPageEntrance 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    opacity: 0; /* Starts hidden, then beautifully fades in */
+    opacity: 0; 
 }
 
-/* 2. Create the movement effect */
 @keyframes smoothPageEntrance {
     from {
         opacity: 0;
-        transform: translateY(12px); /* Gentle upward drift as it fades in */
+        transform: translateY(12px); 
     }
     to {
         opacity: 1;
