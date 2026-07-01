@@ -57,9 +57,7 @@
     </div>
 
     <script>
-// 1. This handles the click, saves data, highlights the button, and moves forward
 function saveAge(ageValue) {
-    // FIX: Changed from localStorage to sessionStorage
     sessionStorage.setItem("userAge", ageValue);
 
     document.querySelectorAll('.cute-split-button-btn').forEach(btn => {
@@ -76,9 +74,8 @@ function saveAge(ageValue) {
     }, 150); 
 }
 
-// 2. This runs EVERY time a page is displayed, even when clicking the "Back" button!
+
 window.addEventListener("pageshow", function(event) {
-    // FIX: Changed from localStorage to sessionStorage
     const savedAge = sessionStorage.getItem("userAge");
 
     if (savedAge) {
